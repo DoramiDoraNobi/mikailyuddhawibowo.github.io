@@ -6,7 +6,8 @@
 
 body {
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-  background: #0f1419;
+  background: linear-gradient(135deg, #0f1419 0%, #1a202c 50%, #2d3748 100%);
+  background-attachment: fixed;
   color: #ffffff;
   line-height: 1.6;
   overflow-x: hidden;
@@ -19,13 +20,14 @@ body {
   left: 0;
   right: 0;
   z-index: 1000;
-  background: rgba(15, 20, 25, 0.95);
-  backdrop-filter: blur(10px);
-  border-bottom: 1px solid rgba(37, 99, 235, 0.2);
+  background: rgba(15, 20, 25, 0.8);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(37, 99, 235, 0.3);
   padding: 1rem 2rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
 }
 
 .nav-brand .logo {
@@ -110,11 +112,32 @@ body {
   justify-content: center;
   position: relative;
   padding: 0 2rem;
+  background: radial-gradient(ellipse at center, rgba(37, 99, 235, 0.1) 0%, transparent 70%);
+  overflow: hidden;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="rgba(37,99,235,0.1)" stroke-width="0.5"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
+  opacity: 0.3;
+  animation: float 20s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-20px) rotate(0.5deg); }
 }
 
 .hero-content {
   text-align: left;
   max-width: 800px;
+  position: relative;
+  z-index: 2;
 }
 
 .breadcrumb {
@@ -128,16 +151,284 @@ body {
   font-size: clamp(2.5rem, 6vw, 4rem);
   font-weight: 300;
   line-height: 1.2;
+  margin-bottom: 1.5rem;
+  background: linear-gradient(135deg, #ffffff 0%, #a0aec0 50%, #2563eb 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: titleGlow 3s ease-in-out infinite alternate;
+}
+
+@keyframes titleGlow {
+  0% { filter: drop-shadow(0 0 5px rgba(37, 99, 235, 0.3)); }
+  100% { filter: drop-shadow(0 0 20px rgba(37, 99, 235, 0.6)); }
 }
 
 .highlight {
-  color: #2563eb;
+  background: linear-gradient(135deg, #2563eb 0%, #3b82f6 50%, #60a5fa 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
   font-weight: 600;
+  animation: highlightPulse 2s ease-in-out infinite alternate;
+}
+
+@keyframes highlightPulse {
+  0% { filter: drop-shadow(0 0 10px rgba(37, 99, 235, 0.5)); }
+  100% { filter: drop-shadow(0 0 25px rgba(37, 99, 235, 0.8)); }
 }
 
 .italic {
   font-style: italic;
   color: #888;
+}
+
+/* Hero subtitle for AI emphasis */
+.hero-subtitle {
+  margin: 1.5rem 0 2rem 0;
+  font-size: 1.2rem;
+  color: #e2e8f0;
+  font-style: italic;
+  padding: 1rem 2rem;
+  background: rgba(37, 99, 235, 0.1);
+  border-left: 4px solid #2563eb;
+  border-radius: 0 12px 12px 0;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 8px 32px rgba(37, 99, 235, 0.1);
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-subtitle::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+  transform: translateX(-100%);
+  animation: shimmer 3s ease-in-out infinite;
+}
+
+.hero-cta {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  font-size: 1.1rem;
+  color: #cbd5e0;
+  margin-top: 2rem;
+}
+
+/* AI Section Styling */
+.ai-section {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 8rem 2rem;
+  background: linear-gradient(135deg, rgba(26, 32, 44, 0.9) 0%, rgba(45, 55, 72, 0.8) 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.ai-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(circle at 30% 20%, rgba(37, 99, 235, 0.1) 0%, transparent 50%),
+              radial-gradient(circle at 80% 80%, rgba(139, 92, 246, 0.1) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+.ai-content {
+  margin-top: 3rem;
+  position: relative;
+  z-index: 2;
+}
+
+.ai-intro {
+  text-align: center;
+  margin-bottom: 5rem;
+}
+
+.ai-intro p {
+  font-size: 1.3rem;
+  line-height: 1.8;
+  color: #e2e8f0;
+  max-width: 800px;
+  margin: 0 auto;
+  font-weight: 400;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.ai-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  margin-bottom: 4rem;
+}
+
+.ai-card {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  padding: 2.5rem;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
+
+.ai-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+  transition: left 0.6s ease;
+}
+
+.ai-card:hover::before {
+  left: 100%;
+}
+
+.ai-card:hover {
+  transform: translateY(-12px) scale(1.02);
+  border-color: rgba(37, 99, 235, 0.5);
+  box-shadow: 0 25px 50px rgba(37, 99, 235, 0.2);
+  background: rgba(37, 99, 235, 0.08);
+}
+
+.ai-icon {
+  font-size: 3.5rem;
+  margin-bottom: 1.5rem;
+  text-align: center;
+  filter: drop-shadow(0 4px 8px rgba(37, 99, 235, 0.3));
+  animation: iconFloat 3s ease-in-out infinite alternate;
+}
+
+@keyframes iconFloat {
+  0% { transform: translateY(0px); }
+  100% { transform: translateY(-5px); }
+}
+
+.ai-card h3 {
+  font-size: 1.4rem;
+  font-weight: 700;
+  background: linear-gradient(135deg, #2563eb 0%, #3b82f6 50%, #60a5fa 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.ai-card p {
+  color: #e2e8f0;
+  line-height: 1.7;
+  margin-bottom: 2rem;
+  font-size: 1rem;
+}
+
+.ai-card ul {
+  list-style: none;
+  padding: 0;
+}
+
+.ai-card li {
+  color: #cbd5e0;
+  padding: 0.5rem 0;
+  position: relative;
+  padding-left: 2rem;
+  transition: color 0.3s ease;
+}
+
+.ai-card li::before {
+  content: '▶';
+  position: absolute;
+  left: 0;
+  color: #2563eb;
+  font-weight: bold;
+  font-size: 0.8rem;
+  animation: pulse 2s ease-in-out infinite;
+}
+
+.ai-card:hover li {
+  color: #f7fafc;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.6; }
+}
+
+.ai-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 2rem;
+  margin-top: 4rem;
+  text-align: center;
+}
+
+.stat-item {
+  padding: 2rem 1.5rem;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(20px);
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.4s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.stat-item::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #2563eb, #3b82f6, #60a5fa);
+  transform: scaleX(0);
+  transition: transform 0.6s ease;
+}
+
+.stat-item:hover::before {
+  transform: scaleX(1);
+}
+
+.stat-item:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(37, 99, 235, 0.3);
+  background: rgba(37, 99, 235, 0.1);
+}
+
+.stat-number {
+  font-size: 3rem;
+  font-weight: 800;
+  background: linear-gradient(135deg, #2563eb 0%, #3b82f6 50%, #60a5fa 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 0.5rem;
+  animation: countUp 2s ease-out;
+}
+
+@keyframes countUp {
+  0% { opacity: 0; transform: translateY(20px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+.stat-label {
+  color: #e2e8f0;
+  font-size: 1rem;
+  font-weight: 500;
+  letter-spacing: 0.05em;
 }
 
 .bold {
@@ -468,6 +759,12 @@ section {
   color: #888;
 }
 
+/* Update about content styling for AI emphasis */
+.about-content strong {
+  color: #2563eb;
+  font-weight: 600;
+}
+
 /* Contact Section Styling */
 .contact-content {
   padding: 2rem 0;
@@ -650,6 +947,36 @@ section {
   .projects-grid {
     grid-template-columns: 1fr;
     gap: 2rem;
+  }
+  
+  .ai-section {
+    padding: 6rem 1rem;
+  }
+  
+  .ai-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  
+  .ai-card {
+    padding: 2rem;
+  }
+  
+  .ai-icon {
+    font-size: 2.5rem;
+  }
+  
+  .stat-number {
+    font-size: 2.5rem;
+  }
+  
+  .ai-intro p {
+    font-size: 1.1rem;
+  }
+  
+  .hero-subtitle {
+    padding: 1rem 1.5rem;
+    font-size: 1rem;
   }
   
   .skills-container {
