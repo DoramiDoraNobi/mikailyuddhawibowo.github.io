@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Gallery - Digital Art Collection</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="gallery.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="nav-brand">
+      <a href="index.html" class="logo">Mikail Yuddha Wibowo/◊</a>
+    </div>
+    <div class="nav-links">
+      <a href="index.html#start" class="nav-link">Start</a>
+      <a href="index.html#work" class="nav-link">Projects</a>
+      <a href="index.html#ai" class="nav-link">AI</a>
+      <a href="index.html#ai-projects" class="nav-link">AI Projects</a>
+      <a href="index.html#lab" class="nav-link">Skills</a>
+      <a href="index.html#about" class="nav-link">About</a>
+      <a href="index.html#contact" class="nav-link">Contact</a>
+    </div>
+  </nav>
+
+  <!-- Gallery Header -->
+  <section class="gallery-header">
+    <div class="container">
+      <div class="breadcrumb">
+        <a href="index.html">Home</a> /◊ <span>Digital Art Collection</span>
+      </div>
+      <h1 class="gallery-title">AI Generated Images</h1>
+      <p class="gallery-subtitle">Koleksi gambar yang dibuat menggunakan Leonardo AI dengan berbagai style dan teknik prompt engineering</p>
+    </div>
+  </section>
+
+  <!-- Search and Filter Section -->
+  <section class="search-section">
+    <div class="container">
+      <div class="search-bar">
+        <input type="text" id="searchInput" placeholder="Search by description or style..." />
+        <button id="searchBtn">🔍</button>
+      </div>
+      
+      <div class="filter-tags">
+        <h3>Filter by Tags:</h3>
+        <div class="tag-list">
+          <button class="filter-tag active" data-tag="all">All (<span id="count-all">0</span>)</button>
+          <button class="filter-tag" data-tag="leonardo">Leonardo (<span id="count-leonardo">0</span>)</button>
+          <button class="filter-tag" data-tag="portrait">Portrait (<span id="count-portrait">0</span>)</button>
+          <button class="filter-tag" data-tag="landscape">Landscape (<span id="count-landscape">0</span>)</button>
+          <button class="filter-tag" data-tag="abstract">Abstract (<span id="count-abstract">0</span>)</button>
+          <button class="filter-tag" data-tag="fantasy">Fantasy (<span id="count-fantasy">0</span>)</button>
+          <button class="filter-tag" data-tag="sci-fi">Sci-Fi (<span id="count-sci-fi">0</span>)</button>
+          <button class="filter-tag" data-tag="digital-art">Digital Art (<span id="count-digital-art">0</span>)</button>
+          <button class="filter-tag" data-tag="concept-art">Concept Art (<span id="count-concept-art">0</span>)</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Gallery Grid -->
+  <section class="gallery-content">
+    <div class="container">
+      <div class="gallery-grid" id="galleryGrid">
+        <!-- Gallery items will be populated by JavaScript -->
+      </div>
+      
+      <div class="load-more-container">
+        <button id="loadMoreBtn" class="load-more-btn">Load More Images</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Image Modal -->
+  <div id="imageModal" class="modal">
+    <div class="modal-content">
+      <span class="close" id="closeModal">&times;</span>
+      <img id="modalImage" src="" alt="">
+      <div class="modal-info">
+        <h3 id="modalTitle"></h3>
+        <p id="modalDescription"></p>
+        <div class="modal-tags" id="modalTags"></div>
+        <div class="modal-prompt">
+          <h4>Prompt Used:</h4>
+          <p id="modalPrompt"></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="gallery.js"></script>
+</body>
+</html>
